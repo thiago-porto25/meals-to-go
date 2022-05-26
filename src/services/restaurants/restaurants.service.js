@@ -1,9 +1,7 @@
 import { mocks, mockImages } from "./mock";
 import camelize from "camelize";
 
-export const restaurantsRequest = async (
-  location = "37.7749295,-122.4194155"
-) => {
+export const restaurantsRequest = (location) => {
   return new Promise((resolve, reject) => {
     const mock = mocks[location];
 
@@ -19,6 +17,7 @@ export const restaurantsTransform = (result = []) => {
   const mappedResults = result.results.map((restaurant) => {
     return {
       ...restaurant,
+      address: restaurant.vicinity,
       isClosedTemporarily: restaurant.business_status === "CLOSED_TEMPORARILY",
       isOpenNow: restaurant.opening_hours && restaurant.opening_hours.open_now,
       photos: restaurant.photos.map(

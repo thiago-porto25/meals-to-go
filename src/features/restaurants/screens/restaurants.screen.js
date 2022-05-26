@@ -1,15 +1,12 @@
 import styled from "styled-components/native";
 import { FlatList } from "react-native";
-import { Searchbar } from "react-native-paper";
 
 import { useRestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import Spacer from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/safe-area/safe-area.component";
-
-const SearchBarContainer = styled.View`
-  padding: ${({ theme }) => theme.space[3]};
-`;
+import { Spinner } from "../../../components/spinner/spinner.component";
+import { Search } from "../components/search.component";
 
 const RestaurantsListContainer = styled.View`
   flex: 1;
@@ -30,16 +27,18 @@ export function RestaurantsScreen() {
 
   return (
     <SafeArea>
-      <SearchBarContainer>
-        <Searchbar />
-      </SearchBarContainer>
-      <RestaurantsListContainer>
-        <FlatList
-          data={restaurants}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.name}
-        />
-      </RestaurantsListContainer>
+      <Search />
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <RestaurantsListContainer>
+          <FlatList
+            data={restaurants}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.name}
+          />
+        </RestaurantsListContainer>
+      )}
     </SafeArea>
   );
 }
