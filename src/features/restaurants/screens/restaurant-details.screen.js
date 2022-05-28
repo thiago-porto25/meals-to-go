@@ -62,7 +62,6 @@ export function RestaurantDetailsScreen({ route }) {
           expanded={drinksExpanded}
           onPress={() => setDrinksExpanded(!drinksExpanded)}
         >
-          <List.Item item="Caipirinha" />
           <List.Item title="Bloody Mary" />
           <List.Item title="Margarita" />
           <List.Item title="Coke" />

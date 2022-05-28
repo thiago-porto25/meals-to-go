@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components/native";
 import { Searchbar } from "react-native-paper";
 
@@ -20,6 +20,7 @@ export function Search() {
     <SearchBarContainer>
       <Searchbar
         placeholder="Search for a location"
+        icon="map"
         value={searchKeyword}
         onChangeText={onChangeText}
         onSubmitEditing={() => {
