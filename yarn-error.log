@@ -1,5 +1,5 @@
 Arguments: 
-  /home/thiago/.nvm/versions/node/v16.14.0/bin/node /home/thiago/.nvm/versions/node/v16.14.0/bin/yarn add -D @types/camelize
+  /home/thiago/.nvm/versions/node/v16.14.0/bin/node /home/thiago/.nvm/versions/node/v16.14.0/bin/yarn add @react/navigation/stack
 
 PATH: 
   /home/thiago/.nvm/versions/node/v16.14.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/thiago/Android/Sdk/emulator:/home/thiago/Android/Sdk/platform-tools:/home/thiago/.dotnet:/home/thiago/Android/Sdk/emulator:/home/thiago/Android/Sdk/platform-tools:/home/thiago/.dotnet:/home/thiago/Android/Sdk/emulator:/home/thiago/Android/Sdk/platform-tools:/home/thiago/.dotnet
@@ -14,8 +14,8 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2fcamelize: Not found
-      at Request.params.callback [as _callback] (/home/thiago/.nvm/versions/node/v16.14.0/lib/node_modules/yarn/lib/cli.js:66138:18)
+  Error: https://registry.yarnpkg.com/@react%2fnavigation/stack: Request "https://registry.yarnpkg.com/@react%2fnavigation/stack" returned a 405
+      at Request.params.callback [as _callback] (/home/thiago/.nvm/versions/node/v16.14.0/lib/node_modules/yarn/lib/cli.js:66147:18)
       at Request.self.callback (/home/thiago/.nvm/versions/node/v16.14.0/lib/node_modules/yarn/lib/cli.js:140883:22)
       at Request.emit (node:events:520:28)
       at Request.<anonymous> (/home/thiago/.nvm/versions/node/v16.14.0/lib/node_modules/yarn/lib/cli.js:141855:10)
