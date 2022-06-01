@@ -25,8 +25,8 @@ const Webview = styled(RawWebView)`
 
 const isAndroid = Platform.OS === "android";
 
-export function CompactRestaurantInfo({ restaurant }) {
-  const RenderedImage = isAndroid ? Webview : Image;
+export function CompactRestaurantInfo({ restaurant, isMap }) {
+  const RenderedImage = isAndroid && isMap ? Webview : Image;
 
   return (
     <Container>
