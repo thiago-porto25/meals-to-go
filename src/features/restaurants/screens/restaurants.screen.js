@@ -2,6 +2,7 @@ import styled from "styled-components/native";
 import { FlatList, TouchableOpacity } from "react-native";
 
 import { useRestaurantsContext } from "../../../services/restaurants/restaurants.context";
+
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import Spacer from "../../../components/spacer/spacer.component";
 import { SafeArea } from "../../../components/safe-area/safe-area.component";
