@@ -5,11 +5,11 @@ import { AppNavigator } from "./app.navigator";
 import { AccountNavigator } from "./account.navigator";
 
 export function Navigation() {
-  const { user } = useAuthContext();
+  const { isAuthenticated } = useAuthContext();
 
   return (
     <NavigationContainer>
-      {user ? <AppNavigator /> : <AccountNavigator />}
+      {isAuthenticated ? <AppNavigator /> : <AccountNavigator />}
     </NavigationContainer>
   );
 }

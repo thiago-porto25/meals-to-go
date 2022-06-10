@@ -1,6 +1,6 @@
-import { useContext, createContext, useState, useEffect } from "react";
+import { useContext, createContext, useState } from "react";
 
-import { loginRequest } from "./auth.service";
+import { loginRequest, registerRequest } from "./auth.service";
 
 const AuthContext = createContext();
 
@@ -12,19 +12,34 @@ export const AuthProvider = ({ children }) => {
   const onLogin = (email, password) => {
     setIsLoading(true);
     loginRequest(email, password)
-      .then((authUser) => {
-        setUser(authUser);
-      })
-      .catch((e) => {
-        setError(e);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+      .then((authUser) => setUser(authUser))
+      .catch((e) => setError(e))
+      .finally(() => setIsLoading(false));
+  };
+
+  const onRegister = (email, password, repeatedPassword) => {
+    if (password !== repeatedPassword) {
+      return setError({ message: "Error: Passwords do not match" });
+    }
+
+    setIsLoading(true);
+    registerRequest(email, password, repeatedPassword)
+      .then((registeredUser) => setUser(registeredUser))
+      .catch((e) => setError(e))
+      .finally(() => setIsLoading(false));
   };
 
   return (
-    <AuthContext.Provider value={{ user, isLoading, error, onLogin }}>
+    <AuthContext.Provider
+      value={{
+        isAuthenticated: !!user,
+        user,
+        isLoading,
+        error,
+        onLogin,
+        onRegister,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
