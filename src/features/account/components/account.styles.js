@@ -50,3 +50,11 @@ export const ErrorContainer = styled.View`
   align-self: center;
   margin: ${({ theme }) => theme.space[2]} 0;
 `;
+
+export const AnimationContainer = styled.View`
+  width: 90%;
+  height: 40%;
+  position: absolute;
+  top: ${({ theme }) => theme.space[4]};
+  padding: ${({ theme }) => theme.space[3]};
+`;
