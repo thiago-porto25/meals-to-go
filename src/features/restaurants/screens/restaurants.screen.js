@@ -11,6 +11,7 @@ import { SafeArea } from "../../../components/safe-area/safe-area.component";
 import { Spinner } from "../../../components/spinner/spinner.component";
 import { Search } from "../components/search.component";
 import { FavoritesBar } from "../../../components/favorite/favorites-bar.component";
+import { FadeInView } from "../../../components/animations/fade.animation";
 
 const RestaurantsListContainer = styled.View`
   flex: 1;
@@ -19,14 +20,14 @@ const RestaurantsListContainer = styled.View`
 
 const renderItem = ({ item, navigation }) => {
   return (
-    <>
+    <FadeInView duration={1000}>
       <TouchableOpacity
         onPress={() => navigation.navigate("RestaurantDetail", { item })}
       >
         <RestaurantInfoCard restaurant={item} />
       </TouchableOpacity>
       <Spacer variant="stack.md" />
-    </>
+    </FadeInView>
   );
 };
 
