@@ -1,5 +1,5 @@
 import { useContext, createContext, useState, useEffect } from "react";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 
 import { auth } from "../../utils/firebase";
 import { loginRequest, registerRequest } from "./auth.service";
@@ -37,14 +37,19 @@ export const AuthProvider = ({ children }) => {
     signOut(auth);
   };
 
-  // onAuthStateChanged(auth, (usr) => {
-  //   if (usr) {
-  //     setUser(usr);
-  //     setIsLoading(false);
-  //   } else {
-  //     setIsLoading(false);
-  //   }
-  // });
+  useEffect(() => {
+    const unsub = auth.onAuthStateChanged((usr) => {
+      if (usr) {
+        setUser(usr);
+      }
+
+      setIsLoading(false);
+    });
+
+    return () => {
+      unsub();
+    };
+  }, []);
 
   return (
     <AuthContext.Provider
