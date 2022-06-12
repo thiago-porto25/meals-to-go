@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ScrollView } from "react-native";
-import { List } from "react-native-paper";
+import { List, Divider } from "react-native-paper";
 
 import { SafeArea } from "../../../components/safe-area/safe-area.component";
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
@@ -31,9 +31,10 @@ export function RestaurantDetailsScreen({ route }) {
           onPress={() => setBreakfastExpanded(!breakfastExpanded)}
         >
           <List.Item title="Eggs Benedict" />
+          <Divider />
           <List.Item title="Classic Breakfast" />
         </List.Accordion>
-
+        <Divider />
         <List.Accordion
           title="Lunch"
           left={LunchIcon}
@@ -41,10 +42,12 @@ export function RestaurantDetailsScreen({ route }) {
           onPress={() => setLunchExpanded(!lunchExpanded)}
         >
           <List.Item title="Cheeseburger with Fries" />
+          <Divider />
           <List.Item title="Pasta Carbonara" />
+          <Divider />
           <List.Item title="Mushroom Soup" />
         </List.Accordion>
-
+        <Divider />
         <List.Accordion
           title="Dinner"
           left={DinnerIcon}
@@ -52,10 +55,12 @@ export function RestaurantDetailsScreen({ route }) {
           onPress={() => setDinnerExpanded(!dinnerExpanded)}
         >
           <List.Item title="Steak and mash potatoes" />
+          <Divider />
           <List.Item title="Pizza" />
+          <Divider />
           <List.Item title="Shrimp Risotto" />
         </List.Accordion>
-
+        <Divider />
         <List.Accordion
           title="Drinks"
           left={DrinksIcon}
@@ -63,7 +68,9 @@ export function RestaurantDetailsScreen({ route }) {
           onPress={() => setDrinksExpanded(!drinksExpanded)}
         >
           <List.Item title="Bloody Mary" />
+          <Divider />
           <List.Item title="Margarita" />
+          <Divider />
           <List.Item title="Coke" />
         </List.Accordion>
       </ScrollView>

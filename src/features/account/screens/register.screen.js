@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ActivityIndicator, Colors } from "react-native-paper";
+import { ActivityIndicator } from "react-native-paper";
 
 import { useAuthContext } from "../../../services/auth/auth.context";
 
@@ -15,6 +15,7 @@ import {
 
 import Spacer from "../../../components/spacer/spacer.component";
 import { Text } from "../../../components/typography/typography.component";
+import { colors } from "../../../infrastructure/theme/colors";
 
 export function RegisterScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -82,7 +83,7 @@ export function RegisterScreen({ navigation }) {
         )}
 
         {isLoading ? (
-          <ActivityIndicator animating color={Colors.blue300} />
+          <ActivityIndicator animating color={colors.brand.primary} />
         ) : (
           <AuthButton icon="email" onPress={handleRegister}>
             Register
