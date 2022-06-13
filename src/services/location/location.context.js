@@ -19,16 +19,24 @@ export const LocationContextProvider = ({ children }) => {
     setKeyword(searchKeyword);
   };
 
-  useEffect(() => {
-    if (keyword) {
-      locationRequest(keyword.toLowerCase())
-        .then(locationTransform)
-        .then((result) => setLocation(result))
-        .catch((e) => setError(e))
-        .finally(() => setIsLoading(false));
-    } else {
-      setIsLoading(false);
+  const retrieveLocation = async (searchKeyword) => {
+    if (!searchKeyword) {
+      return setIsLoading(false);
     }
+
+    try {
+      const result = await locationRequest(searchKeyword);
+      const transformedResult = locationTransform(result);
+      setLocation(transformedResult);
+    } catch (e) {
+      setError(e);
+    }
+
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    retrieveLocation(keyword);
   }, [keyword]);
 
   return (
