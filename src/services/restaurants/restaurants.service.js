@@ -1,11 +1,11 @@
 import axios from "axios";
 import camelize from "camelize";
 
-import { functionsBaseURL } from "../../utils/env";
+import { functionsBaseURL, isMock } from "../../utils/env";
 
 export const restaurantsRequest = async (location) => {
   const res = await axios.get(`${functionsBaseURL}/placesNearby`, {
-    params: { location },
+    params: { location, mock: isMock },
   });
 
   return await res.data;

@@ -4,9 +4,11 @@ import { FlatList, TouchableOpacity } from "react-native";
 
 import { useRestaurantsContext } from "../../../services/restaurants/restaurants.context";
 import { useFavoritesContext } from "../../../services/favorites/favorites.context";
+import { useLocationContext } from "../../../services/location/location.context";
 
 import { RestaurantInfoCard } from "../components/restaurant-info-card.component";
 import Spacer from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/typography.component";
 import { SafeArea } from "../../../components/safe-area/safe-area.component";
 import { Spinner } from "../../../components/spinner/spinner.component";
 import { Search } from "../components/search.component";
@@ -32,7 +34,12 @@ const renderItem = ({ item, navigation }) => {
 };
 
 export function RestaurantsScreen({ navigation }) {
-  const { restaurants, isLoading } = useRestaurantsContext();
+  const { error: locationError } = useLocationContext();
+  const {
+    restaurants,
+    isLoading,
+    error: restaurantError,
+  } = useRestaurantsContext();
   const { favorites } = useFavoritesContext();
   const [isFavoritesToggled, setIsFavoritesToggled] = useState();
 
@@ -49,6 +56,12 @@ export function RestaurantsScreen({ navigation }) {
 
       {isLoading ? (
         <Spinner />
+      ) : !!locationError || !!restaurantError ? (
+        <RestaurantsListContainer>
+          <Text variant="error">
+            Something went wrong while retrieving the data
+          </Text>
+        </RestaurantsListContainer>
       ) : (
         <RestaurantsListContainer>
           <FlatList

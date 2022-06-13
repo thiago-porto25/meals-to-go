@@ -1,11 +1,11 @@
 import camelize from "camelize";
 import axios from "axios";
 
-import { functionsBaseURL } from "../../utils/env";
+import { functionsBaseURL, isMock } from "../../utils/env";
 
 export const locationRequest = async (searchTerm) => {
   const response = await axios.get(`${functionsBaseURL}/geocode`, {
-    params: { city: searchTerm },
+    params: { city: searchTerm, mock: isMock },
   });
   return await response.data;
 };

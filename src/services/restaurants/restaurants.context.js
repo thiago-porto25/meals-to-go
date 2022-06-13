@@ -17,6 +17,7 @@ export const RestaurantsContextProvider = ({ children }) => {
   const retrieveRestaurants = async (loc) => {
     setIsLoading(true);
     setRestaurants([]);
+    setError(null);
 
     try {
       const result = await restaurantsRequest(loc);

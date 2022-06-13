@@ -16,6 +16,7 @@ export const LocationContextProvider = ({ children }) => {
     }
 
     setIsLoading(true);
+    setError(null);
     setKeyword(searchKeyword);
   };
 
